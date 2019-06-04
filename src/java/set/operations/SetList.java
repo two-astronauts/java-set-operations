@@ -47,6 +47,74 @@ public class SetList {
     
     /**
      * 
+     * @param paramData 
+     */
+    public void add(String paramData) {
+        Node data = new Node(paramData);
+        if(this.isEmpty()) {
+            this.head = data;
+        }else{
+            this.lastNode.setNextNode(data);
+        }
+        this.lastNode = data;
+        this.count++;
+    }
+    
+    /**
+     * 
+     * @param paramData
+     * @return 
+     */
+    public boolean delete(String paramData) {
+        if(!this.isEmpty()) {
+            Node aux = this.head;
+            Node previous = null;
+            boolean exist = false;
+            while(aux != null && !exist) {
+                if(aux.getData().equals(paramData)) {
+                    exist = true;
+                }else {
+                    previous = aux;
+                    aux = aux.getNextNode();
+                }
+            }
+            if(exist) {
+                if(aux == this.head) {
+                    this.head = this.getHead().getNextNode();
+                }else {
+                    previous.setNextNode(aux.getNextNode());
+                }
+                this.count--;
+            }
+            return exist;
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     * @param paramData
+     * @return 
+     */
+    public int position(String paramData) {
+        if(!this.isEmpty()) {
+            int count = 0;
+            Node aux = this.head;
+            while(aux != null) {
+                if(aux.getData().equals(paramData)) {
+                    return count;
+                }else {
+                    count++;
+                    aux = aux.getNextNode();
+                }
+            }
+            return -0;
+        }
+        return -0;
+    }
+    
+     /**
+     * 
      * @param paramData
      * @return 
      */
@@ -90,21 +158,6 @@ public class SetList {
     
     /**
      * 
-     * @param paramData 
-     */
-    public void add(String paramData) {
-        Node data = new Node(paramData);
-        if(this.isEmpty()) {
-            this.head = data;
-        }else{
-            this.lastNode.setNextNode(data);
-        }
-        this.lastNode = data;
-        this.count++;
-    }
-    
-    /**
-     * 
      * @param paramSet
      * @return 
      */
@@ -123,7 +176,7 @@ public class SetList {
                 aux = aux.getNextNode();
             }
             aux = paramSet.getHead();
-            if(aux != null) {
+            while(aux != null) {
                 if(!result.belongs(aux.getData())){
                     result.add(aux.getData());
                 }
@@ -196,58 +249,6 @@ public class SetList {
     
     /**
      * 
-     * @param paramData
-     * @return 
-     */
-    public boolean delete(String paramData) {
-        if(!this.isEmpty()) {
-            Node aux = this.head;
-            Node previous = null;
-            boolean exist = false;
-            while(aux != null && !exist) {
-                if(aux.getData().equals(paramData)) {
-                    exist = true;
-                }else {
-                    previous = aux;
-                    aux = aux.getNextNode();
-                }
-            }
-            if(exist) {
-                if(aux == this.head) {
-                    this.head = this.getHead().getNextNode();
-                }else {
-                    previous.setNextNode(aux.getNextNode());
-                }
-            }
-            return exist;
-        }
-        return false;
-    }
-    
-    /**
-     * 
-     * @param paramData
-     * @return 
-     */
-    public int position(String paramData) {
-        if(!this.isEmpty()) {
-            int count = 0;
-            Node aux = this.head;
-            while(aux != null) {
-                if(aux.getData().equals(paramData)) {
-                    return count;
-                }else {
-                    count++;
-                    aux = aux.getNextNode();
-                }
-            }
-            return -0;
-        }
-        return -0;
-    }
-    
-    /**
-     * 
      * @param paramSet
      * @return 
      */
@@ -266,8 +267,13 @@ public class SetList {
         }
     }
     
+    /**
+     * 
+     * @param paramSet
+     * @return 
+     */
     public SetList symmetricDifference(SetList paramSet) {
-         if(paramSet.isEmpty()) {
+        if(paramSet.isEmpty()) {
             return this;
         }else if (this.isEmpty()) {
             return paramSet;
