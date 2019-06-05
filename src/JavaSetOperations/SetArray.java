@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.set.operations;
+package JavaSetOperations;
 
 /**
  *
@@ -13,8 +13,8 @@ public class SetArray {
     private String vector[];
     private int count;
     
-    public SetArray() {
-        this.vector = new String[10];
+    public SetArray(int paramLength) {
+        this.vector = new String[paramLength];
         this.count = 0;
     }
 
@@ -96,13 +96,29 @@ public class SetArray {
     
     /**
      * 
+     * @param paramPosition
+     * @return 
+     */
+    public String getData(int paramPosition) {
+        if(!this.isEmpty()) {
+            for(int i = 0; i < this.vector.length; i++) {
+                if(i == paramPosition) {
+                    return this.vector[i];
+                }
+            }
+        }
+        return "";
+    }
+    
+    /**
+     * 
      * @param paramData
      * @return 
      */
     public boolean belongs(String paramData) {
         if(!this.isEmpty()) {
             for (String value : this.vector) {
-                if(value.equals(paramData)) {
+                if(value != null && value.equals(paramData)) {
                     return true;
                 }
             }
@@ -138,7 +154,7 @@ public class SetArray {
         }else if(paramSet.isEmpty()) {
            return this;
         }else {
-            SetArray result = new SetArray();
+            SetArray result = new SetArray(10);
             for (String value : this.vector) {
                 if(!result.belongs(value)) {
                     result.add(value);
@@ -159,7 +175,7 @@ public class SetArray {
      * @return 
      */
     public SetArray intersection(SetArray paramSet) {
-        SetArray result = new SetArray();
+        SetArray result = new SetArray(10);
         if(!this.isEmpty() && !paramSet.isEmpty()) {
             for (String value : this.vector) {
                 if(paramSet.belongs(value)) {
@@ -193,7 +209,7 @@ public class SetArray {
      * @return 
      */
     public SetArray complement(SetArray paramUniversalSet) {
-        SetArray result = new SetArray();
+        SetArray result = new SetArray(10);
         if(this.isEmpty()) {
             result = paramUniversalSet;
         }else {
@@ -215,7 +231,7 @@ public class SetArray {
         if(paramSet.isEmpty()) {
             return this;
         }else {
-            SetArray result = new SetArray();
+            SetArray result = new SetArray(10);
             for (String value : this.vector) {
                 if(!paramSet.belongs(value)) {
                     result.add(value);
@@ -236,7 +252,7 @@ public class SetArray {
         }else if (this.isEmpty()) {
             return paramSet;
         }else {
-            SetArray result = new SetArray();
+            SetArray result = new SetArray(10);
             for (String value : this.vector) {
                 if(!paramSet.belongs(value)) {
                     result.add(value);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.set.operations;
+package JavaSetOperations;
 
 /**
  *
@@ -111,6 +111,29 @@ public class SetList {
             return -0;
         }
         return -0;
+    }
+    
+    /**
+     * 
+     * @param paramPosition
+     * @return 
+     */
+    public String getData(int paramPosition) {
+        if(!this.isEmpty()) {
+            int count = 0;
+            Node aux = this.head;
+            while(aux != null) {
+                if(count == paramPosition) {
+                    String data = aux.getData();
+                    aux = null;
+                    return data;
+                }else {
+                    count++;
+                    aux = aux.getNextNode();
+                }
+            }
+        }
+        return "";
     }
     
      /**
