@@ -26,8 +26,8 @@ public class JavaSetOperations {
         int option = 0;
         String menu = "MENU\n1.Union de a y b en listas\n2.Intersección de a y b en listas\n3.Igualdad de a y b en listas\n4.Complemento de a en listas"
             + "\n5.Diferencia de a con b en listas\n6.Diferencia de b con a en listas\n7. Diferencia simetrica de a y b en listas"
-            + "n8.Union de a y b en vectores\n9.Intersección de a y b en vectores\n10.Igualdad de a y b en vectores\n12.Complemento de a en vectores"
-            + "\n13.Complemento de b en vectores\n14.Diferencia de a con b en vectores\n15.Diferencia de b con a en vectores\n16. Diferencia simetrica de a y b en vectores"
+            + "\n8.Union de c y d en vectores\n9.Intersección de c y d en vectores\n10.Igualdad de c y d en vectores\n11.Complemento de c en vectores"
+            + "\n12.Diferencia c con d con vectores\n13.Diferencia de d con c en vectores\n14.Diferencia simetrica de c y d en vectores"
             + " \n0.salir\nDigite la opcion";
         
         universalList.add("Cartagena");
@@ -40,6 +40,9 @@ public class JavaSetOperations {
         universalList.add("Cúcuta");
         universalList.add("Manizales");
         universalList.add("Pereira");
+        
+        System.out.println("El conjunto universal en lista sería: ");
+        showResultList(universalList);
         
         int countRandom = 5;
         int countRandomSuccessfull = 0;
@@ -78,6 +81,9 @@ public class JavaSetOperations {
         universalArray.add("Popayán");
         universalArray.add("Neiva");
         universalArray.add("Tunja");
+        
+        System.out.println("El conjunto universal en array sería: ");
+        showResultArray(universalArray);
         
         countRandomSuccessfull = 0;
         while(countRandom != countRandomSuccessfull) {

@@ -285,6 +285,7 @@ public class SetList {
                 if(!paramSet.belongs(aux.getData())) {
                     result.add(aux.getData());
                 }
+                aux = aux.getNextNode();
             }
             return result;
         }
@@ -307,12 +308,14 @@ public class SetList {
                 if(!paramSet.belongs(aux.getData())) {
                     result.add(aux.getData());
                 }
+                aux = aux.getNextNode();
             }
             aux = paramSet.getHead();
             while(aux != null) {
                 if(!this.belongs(aux.getData())) {
                     result.add(aux.getData());
                 }
+                aux = aux.getNextNode();
             }
             return result;
         }
